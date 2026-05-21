@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://caregiving-workshop.pages.dev/sitemap.xml
