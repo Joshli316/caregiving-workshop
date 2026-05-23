@@ -265,6 +265,26 @@ a:focus-visible {
   line-height: 1.4;
 }
 
+/* ─── Visual Scaffolding (SVG figures) ──────────────────── */
+.viz {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto 14px;
+  display: block;
+}
+.viz svg { display: block; width: 100%; height: auto; }
+.viz figcaption {
+  font-size: 15px;
+  color: var(--text-sub);
+  text-align: center;
+  margin-top: 6px;
+}
+.viz figcaption .zh {
+  font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  font-size: 16px;
+}
+.viz-bars { max-width: 520px; }
+
 /* ─── Pay Table (slide 4) ───────────────────────────────── */
 .pay-table {
   width: 100%;

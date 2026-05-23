@@ -1,4 +1,4 @@
-const CACHE = 'caregiving-workshop-v5';
+const CACHE = 'caregiving-workshop-v6';
 const ASSETS = [
   '/',
   '/index.html',
@@ -7,6 +7,7 @@ const ASSETS = [
   '/styles.css',
   '/print.css',
   '/qrcode.min.js',
+  '/apple-touch-icon.png',
 ];
 
 self.addEventListener('install', e => {

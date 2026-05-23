@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,9 +14,13 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="医疗与护理行业 · Healthcare & Caregiving Workshop — Chinatown Service Center">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="医疗与护理行业 · Healthcare &amp; Caregiving Workshop">
+  <meta name="twitter:description" content="HHA · CNA · training programs · career ladder. Free bilingual workshop for new immigrants in LA.">
   <meta name="twitter:image" content="https://caregiving-workshop.pages.dev/og.jpg">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="zh">
@@ -28,7 +32,7 @@
   <span class="section-label" id="sectionLabel"></span>
   <div class="header-right">
     <span class="slide-counter" id="slideCounter" aria-live="polite" aria-atomic="true">1 / 13</span>
-    <button class="lang-toggle" id="langToggle" onclick="toggleLang()" aria-label="切换语言 · Toggle language" aria-pressed="true">中文</button>
+    <button class="lang-toggle" id="langToggle" data-action="toggle-lang" aria-label="切换语言 · Toggle language" aria-pressed="true">中文</button>
   </div>
 </header>
 
@@ -148,6 +152,35 @@
         <span class="zh">每小时基本工资（2025 年）</span>
         <span class="en">Hourly base pay (2025) — before overtime &amp; bonuses</span>
       </div>
+      <figure class="viz viz-bars" role="img" aria-label="Caregiving hourly wage comparison in LA">
+        <svg viewBox="0 0 460 180" width="100%" height="180" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+          <!-- Companion: $16.50 -->
+          <text x="0" y="22" font-size="14" fill="currentColor">Companion</text>
+          <rect x="130" y="10" width="132" height="20" rx="3" fill="var(--match-2, #0ea5e9)" opacity="0.80"/>
+          <text x="270" y="22" font-size="14" fill="currentColor" font-weight="700">$16–17</text>
+          <!-- HHA: $17.50 -->
+          <text x="0" y="58" font-size="14" fill="currentColor">HHA</text>
+          <rect x="130" y="46" width="140" height="20" rx="3" fill="var(--primary, #1d4ed8)"/>
+          <text x="278" y="58" font-size="14" fill="currentColor" font-weight="700">$17–18</text>
+          <!-- CNA: $22 -->
+          <text x="0" y="94" font-size="14" fill="currentColor">CNA</text>
+          <rect x="130" y="82" width="176" height="20" rx="3" fill="var(--primary-dark, #1e3a8a)"/>
+          <text x="314" y="94" font-size="14" fill="currentColor" font-weight="700">$20–24</text>
+          <!-- MA: $24.50 -->
+          <text x="0" y="130" font-size="14" fill="currentColor">Medical Asst</text>
+          <rect x="130" y="118" width="196" height="20" rx="3" fill="#c2410c"/>
+          <text x="334" y="130" font-size="14" fill="currentColor" font-weight="700">$23–26</text>
+          <!-- axis -->
+          <line x1="130" y1="148" x2="350" y2="148" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+          <text x="130" y="166" font-size="11" fill="currentColor" opacity="0.65">$15</text>
+          <text x="220" y="166" font-size="11" fill="currentColor" opacity="0.65">$20</text>
+          <text x="305" y="166" font-size="11" fill="currentColor" opacity="0.65">$25</text>
+        </svg>
+        <figcaption>
+          <span class="zh">证书越高,时薪越高 — 但培训也更长</span>
+          <span class="en">More cert = more pay — but longer training</span>
+        </figcaption>
+      </figure>
       <table class="pay-table">
         <thead>
           <tr>
@@ -266,7 +299,7 @@
         </div>
       </div>
 
-      <button class="reveal-btn" id="reveal-btn-5" onclick="revealActivity()">
+      <button class="reveal-btn" id="reveal-btn-5" data-action="reveal-activity">
         <span class="zh">揭晓答案 · Reveal Answers</span>
         <span class="en">Reveal Answers</span>
       </button>
@@ -473,7 +506,7 @@
       </div>
       <div class="vote-prompt"><span class="zh">🙋 举手 — 对 TRUE / 错 FALSE</span><span class="en">🙋 Raise your hand — TRUE / FALSE</span></div>
 
-      <button class="reveal-btn" id="reveal-btn-q1" onclick="revealQ1()">
+      <button class="reveal-btn" id="reveal-btn-q1" data-action="reveal-q1">
         <span class="zh">揭晓答案 1 · Reveal Answer</span>
         <span class="en">Reveal Answer 1</span>
       </button>
@@ -492,7 +525,7 @@
         </div>
         <div class="vote-prompt"><span class="zh">🙋 举手 — 对 TRUE / 错 FALSE</span><span class="en">🙋 Raise your hand — TRUE / FALSE</span></div>
 
-        <button class="reveal-btn" id="reveal-btn-q2" onclick="revealQ2()">
+        <button class="reveal-btn" id="reveal-btn-q2" data-action="reveal-q2">
           <span class="zh">揭晓答案 2 · Reveal Answer</span>
           <span class="en">Reveal Answer 2</span>
         </button>
@@ -660,10 +693,10 @@
 <footer class="slide-footer">
   <div class="progress-dots" id="progressDots"></div>
   <div class="footer-nav">
-    <button class="nav-btn nav-btn--home" id="homeBtn" onclick="cur=1;showSlide(1);" aria-label="回到第一页 · Go to first slide"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></button>
-    <button class="nav-btn" id="prevBtn" onclick="prevSlide()" aria-label="上一页 · Previous slide">&#8249;</button>
+    <button class="nav-btn nav-btn--home" id="homeBtn" data-action="home" aria-label="回到第一页 · Go to first slide"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></button>
+    <button class="nav-btn" id="prevBtn" data-action="prev" aria-label="上一页 · Previous slide">&#8249;</button>
     <div class="key-hint"><span class="zh">← → 或点击任意处翻页</span><span class="en">← → or click anywhere to advance</span></div>
-    <button class="nav-btn" id="nextBtn" onclick="nextSlide()" aria-label="下一页 · Next slide">&#8250;</button>
+    <button class="nav-btn" id="nextBtn" data-action="next" aria-label="下一页 · Next slide">&#8250;</button>
   </div>
 </footer>
 
@@ -694,7 +727,7 @@
   function toggleLang() {
     const isZh = document.body.classList.toggle('zh');
     localStorage.setItem('cgw_lang', isZh ? 'zh' : 'en');
-    document.documentElement.lang = isZh ? 'zh-Hans' : 'en';
+    document.documentElement.lang = isZh ? 'zh-CN' : 'en';
     const btn = document.getElementById('langToggle');
     btn.textContent = isZh ? '中文' : 'EN';
     btn.setAttribute('aria-pressed', isZh ? 'true' : 'false');
@@ -704,7 +737,7 @@
     const saved = localStorage.getItem('cgw_lang');
     const isZh = saved !== 'en';
     document.body.classList.toggle('zh', isZh);
-    document.documentElement.lang = isZh ? 'zh-Hans' : 'en';
+    document.documentElement.lang = isZh ? 'zh-CN' : 'en';
     const btn = document.getElementById('langToggle');
     btn.textContent = isZh ? '中文' : 'EN';
     btn.setAttribute('aria-pressed', isZh ? 'true' : 'false');
@@ -802,6 +835,20 @@
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
       e.preventDefault(); prevSlide();
     }
+  });
+
+  // ── Delegated data-action handler (CSP-friendly, no inline onclick) ──
+  document.body.addEventListener('click', function(e) {
+    const target = e.target.closest('[data-action]');
+    if (!target) return;
+    const action = target.dataset.action;
+    if (action === 'toggle-lang')      { toggleLang(); return; }
+    if (action === 'home')             { cur = 1; showSlide(1); return; }
+    if (action === 'prev')             { prevSlide(); return; }
+    if (action === 'next')             { nextSlide(); return; }
+    if (action === 'reveal-activity')  { revealActivity(); return; }
+    if (action === 'reveal-q1')        { revealQ1(); return; }
+    if (action === 'reveal-q2')        { revealQ2(); return; }
   });
 
   // ── Date on title slide ──────────────────────────────

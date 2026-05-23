@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,9 +14,13 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="护理资源 · Caregiving Resources — Chinatown Service Center">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="护理资源 · Caregiving Resources — Chinatown Service Center">
+  <meta name="twitter:description" content="HHA · CNA training, IHSS, SEIU 2015 fund, career ladder, employer list, free programs in Los Angeles.">
   <meta name="twitter:image" content="https://caregiving-workshop.pages.dev/og.jpg">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="print.css">
 </head>
@@ -29,9 +33,9 @@
     <div class="resources-title-en">Healthcare &amp; Caregiving Workshop · Resource Guide · Chinatown Service Center</div>
   </div>
   <div class="header-actions">
-    <button class="btn-ghost" id="langToggle" onclick="toggleLang()" aria-label="切换语言 · Toggle language" aria-pressed="true">中文</button>
+    <button class="btn-ghost" id="langToggle" data-action="toggle-lang" aria-label="切换语言 · Toggle language" aria-pressed="true">中文</button>
     <a class="btn-ghost" href="https://csc-workshops.pages.dev" target="_blank" rel="noopener">↗ <span class="zh">全部工作坊</span><span class="en">All workshops</span></a>
-    <button class="btn-primary print-btn" onclick="window.print()">🖨️ <span class="zh">打印</span><span class="en">Print</span></button>
+    <button class="btn-primary print-btn" data-action="print">🖨️ <span class="zh">打印</span><span class="en">Print</span></button>
     <a class="btn-ghost back-link" href="index.html">← <span class="zh">返回幻灯片</span><span class="en">Back to Slides</span></a>
   </div>
 </header>
@@ -398,7 +402,7 @@
   function toggleLang() {
     const isZh = document.body.classList.toggle('zh');
     localStorage.setItem('cgw_lang', isZh ? 'zh' : 'en');
-    document.documentElement.lang = isZh ? 'zh-Hans' : 'en';
+    document.documentElement.lang = isZh ? 'zh-CN' : 'en';
     const btn = document.getElementById('langToggle');
     btn.textContent = isZh ? '中文' : 'EN';
     btn.setAttribute('aria-pressed', isZh ? 'true' : 'false');
@@ -408,11 +412,20 @@
     const saved = localStorage.getItem('cgw_lang');
     const isZh = saved !== 'en';
     document.body.classList.toggle('zh', isZh);
-    document.documentElement.lang = isZh ? 'zh-Hans' : 'en';
+    document.documentElement.lang = isZh ? 'zh-CN' : 'en';
     const btn = document.getElementById('langToggle');
     btn.textContent = isZh ? '中文' : 'EN';
     btn.setAttribute('aria-pressed', isZh ? 'true' : 'false');
   })();
+
+  // ── Delegated data-action handler ──
+  document.body.addEventListener('click', function(e) {
+    const target = e.target.closest('[data-action]');
+    if (!target) return;
+    const action = target.dataset.action;
+    if (action === 'toggle-lang') { toggleLang(); return; }
+    if (action === 'print')       { window.print(); return; }
+  });
 
   try {
     new QRCode(document.getElementById('qr-top'), {
