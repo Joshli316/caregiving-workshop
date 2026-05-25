@@ -1,4 +1,4 @@
-const CACHE = 'caregiving-workshop-v7';
+const CACHE = 'caregiving-workshop-v8';
 const ASSETS = [
   '/',
   '/index.html',
